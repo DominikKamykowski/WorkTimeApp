@@ -6,17 +6,29 @@ namespace CzasPracy
 {
     class Day
     {
-        public Day(DateTime date, DateTime comeTime, DateTime leaveTime)
+        public Day(DateTime date, 
+            int comeTimeHour, 
+            int comeTimeMinute, 
+            int leaveTimeHour, 
+            int leaveTimeMinute, 
+            bool isSaturday, 
+            bool isSunday)
         {
             Date = date;
-            ComeTime = comeTime;
-            LeaveTime = leaveTime;
+            ComeTimeHour = comeTimeHour;
+            ComeTimeMinute = comeTimeMinute;
+            LeaveTimeHour = leaveTimeHour;
+            LeaveTimeMinute = leaveTimeMinute;
+            this.isSaturday = isSaturday;
+            this.isSunday = isSunday;
         }
 
         private DateTime Date { get; set; }
         
-        private DateTime ComeTime { get; set; }
-        private DateTime LeaveTime { get; set; }
+        private int ComeTimeHour { get; set; }
+        private int ComeTimeMinute { get; set; }
+        private int LeaveTimeHour { get; set; }
+        private int LeaveTimeMinute { get; set; }
 
         public bool isSaturday { get; set; }
 
@@ -28,9 +40,9 @@ namespace CzasPracy
                 Date.Year, 
                 Date.Month, 
                 Date.Day, 
-                ComeTime.Hour, 
-                ComeTime.Minute, 
-                ComeTime.Second);
+                ComeTimeHour, 
+                ComeTimeMinute, 
+                0);
 
             return dateTime;
         }
@@ -52,8 +64,8 @@ namespace CzasPracy
 
             
 
-            returnString += " Godzina wejścia: " + ComeTime.ToString();
-            returnString += " Godzina wyjścia: " + LeaveTime.ToString();
+            returnString += " Godzina wejścia: " + ComeTimeHour + ":" + ComeTimeMinute;
+            returnString += " Godzina wyjścia: " + LeaveTimeHour + ":" + LeaveTimeMinute;
             returnString += " " + returnIsWeekend();
 
 

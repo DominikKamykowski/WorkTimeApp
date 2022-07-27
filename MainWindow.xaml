@@ -15,15 +15,21 @@
                     <Rectangle HorizontalAlignment="Left" Height="199" Margin="196,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
                     <Label Content="Godziny:" HorizontalAlignment="Left" Margin="202,10,0,0" VerticalAlignment="Top" Width="179" HorizontalContentAlignment="Center"/>
                     <Label Content="Godzina wejścia:" HorizontalAlignment="Left" Margin="202,66,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="txtComeTime" HorizontalAlignment="Left" Margin="304,66,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" Height="26"/>
+                    <TextBox x:Name="txtComeTimeHour" HorizontalAlignment="Left" Margin="304,66,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Height="26"/>
+                    <TextBox x:Name="txtComeTimeMinute" HorizontalAlignment="Left" Margin="364,66,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Height="26"/>
+
                     <Label Content="Godzina wyjścia:" HorizontalAlignment="Left" Margin="202,97,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="txtLeaveTime" HorizontalAlignment="Left" Margin="304,97,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" Height="26"/>
+                    <TextBox x:Name="txtLeaveTimeHour" HorizontalAlignment="Left" Margin="304,97,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Height="26"/>
+                    <TextBox x:Name="txtLeaveTimeMinute" HorizontalAlignment="Left" Margin="364,97,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Height="26"/>
+
                     <CheckBox x:Name="cb8hours" Content="Pełne 8h pracy" HorizontalAlignment="Left" Margin="202,41,0,0" VerticalAlignment="Top" Click="cb8hours_Click" />
                     <Button x:Name="btnApply" Content="Zatwierdź" HorizontalAlignment="Left" Margin="258,168,0,0" VerticalAlignment="Top" Click="btnApply_Click" Width="90" Height="25"/>
                     <CheckBox x:Name="cbSaturday" Content="Sobota" HorizontalAlignment="Left" Margin="202,136,0,0" VerticalAlignment="Top"/>
                     <CheckBox x:Name="cbSunday" Content="Niedziela" HorizontalAlignment="Left" Margin="279,136,0,0" VerticalAlignment="Top"/>
                     <Button x:Name="btnDelegat" Content="Delegacja" HorizontalAlignment="Left" Margin="304,39,0,0" VerticalAlignment="Top" Width="95"/>
                     <Label x:Name="lblDebug" Content="Label" HorizontalAlignment="Center" Margin="0,209,0,0" VerticalAlignment="Top" Width="615"/>
+                    <Label Content=":" HorizontalAlignment="Left" Margin="344,66,0,0" VerticalAlignment="Top" Width="15"/>
+                    <Label Content=":" HorizontalAlignment="Left" Margin="344,97,0,0" VerticalAlignment="Top" Width="15"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Zestawienie">

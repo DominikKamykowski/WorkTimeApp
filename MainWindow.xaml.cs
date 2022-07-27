@@ -30,7 +30,8 @@ namespace CzasPracy
         {
             ///// obsluga widoku 8h pracy
             cb8hours.IsChecked = true;
-            txtLeaveTime.IsEnabled = false;
+            txtLeaveTimeHour.IsEnabled = false;
+            txtLeaveTimeMinute.IsEnabled = false;
 
             ///// Do implementacji
             ///
@@ -44,11 +45,13 @@ namespace CzasPracy
         {
             if ((bool)cb8hours.IsChecked)
             {
-                txtLeaveTime.IsEnabled = false;
+                txtLeaveTimeHour.IsEnabled = false;
+                txtLeaveTimeMinute.IsEnabled = false;
             }
             else
             {
-                txtLeaveTime.IsEnabled = true;
+                txtLeaveTimeHour.IsEnabled = true;
+                txtLeaveTimeMinute.IsEnabled = true;
             }
         }
 
@@ -56,8 +59,15 @@ namespace CzasPracy
         {
             if ((bool)cb8hours.IsChecked)
             {
-                var timeLeave = convertToTime(txtComeTime.Text).AddHours(8);
-                Day day = new Day(selectedDay(), convertToTime(txtComeTime.Text), timeLeave);
+                Day day = new Day(selectedDay(),
+                    int.Parse(txtComeTimeHour.Text),
+                    int.Parse(txtComeTimeMinute.Text),
+                    int.Parse(txtComeTimeHour.Text)+8,
+                    int.Parse(txtComeTimeMinute.Text),
+                    (bool)cbSaturday.IsChecked,
+                    (bool)cbSunday.IsChecked);
+
+                
                 List<Day> days = new List<Day>();
                 days.Add(day);
 
@@ -77,9 +87,16 @@ namespace CzasPracy
             }
             else
             {
-                Day day = new Day(selectedDay(), convertToTime(txtComeTime.Text), convertToTime(txtLeaveTime.Text));
+                Day day = new Day(selectedDay(), 
+                    int.Parse(txtComeTimeHour.Text),
+                    int.Parse(txtComeTimeMinute.Text),
+                    int.Parse(txtLeaveTimeHour.Text),
+                    int.Parse(txtLeaveTimeMinute.Text),
+                    (bool)cbSaturday.IsChecked,
+                    (bool)cbSunday.IsChecked);
                 
                 lblDebug.Content = day.ToString();
+                 
             }
         }
 
