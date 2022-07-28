@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "4+oZUMfFItdpE0iotQwUlc1oLXRo2uJr/czTi0klUKn1S57MZtzFXmVLX32xiKEQzmroFxnsHHwgdUlvjtuEdQ==",
+  "dgSpecHash": "BTfRahMGLy905wb1UqycuD1SHgA35YgOyD9W4bJgMTpMLThGtkjxhvWgIVqL34C9JKGeMV9PBqlO1by/m+9XSA==",
   "success": true,
   "projectFilePath": "C:\\Users\\user\\source\\repos\\CzasPracy\\CzasPracy.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

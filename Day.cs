@@ -23,12 +23,12 @@ namespace CzasPracy
             this.isSunday = isSunday;
         }
 
-        private DateTime Date { get; set; }
-        
-        private int ComeTimeHour { get; set; }
-        private int ComeTimeMinute { get; set; }
-        private int LeaveTimeHour { get; set; }
-        private int LeaveTimeMinute { get; set; }
+        public DateTime Date { get; set; }
+
+        public int ComeTimeHour { get; set; }
+        public int ComeTimeMinute { get; set; }
+        public int LeaveTimeHour { get; set; }
+        public int LeaveTimeMinute { get; set; }
 
         public bool isSaturday { get; set; }
 

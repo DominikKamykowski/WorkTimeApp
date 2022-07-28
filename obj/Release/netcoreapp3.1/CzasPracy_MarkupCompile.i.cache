@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\user\source\repos\CzasPracy\obj\Debug\netcoreapp3.1\
+C:\Users\user\source\repos\CzasPracy\obj\Release\netcoreapp3.1\
 CzasPracy
 none
 false
-TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
+TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1;
 C:\Users\user\source\repos\CzasPracy\App.xaml
 11407045341
 
-7-47611364
-193-122745784
+62076172956
+192-1533232326
 MainWindow.xaml;
 
 False

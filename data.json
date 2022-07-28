@@ -1,0 +1,11 @@
+[
+  {
+    "Date": "2022-07-28T09:04:03.9592746+02:00",
+    "ComeTimeHour": 6,
+    "ComeTimeMinute": 0,
+    "LeaveTimeHour": 14,
+    "LeaveTimeMinute": 0,
+    "isSaturday": false,
+    "isSunday": true
+  }
+]

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using JsonInNET;
 
 namespace CzasPracy
 {
@@ -20,6 +21,8 @@ namespace CzasPracy
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string filePath = @"C:\Users\user\source\repos\CzasPracy\data.json";
+
         public MainWindow()
         {
             InitializeComponent();
@@ -67,10 +70,6 @@ namespace CzasPracy
                     (bool)cbSaturday.IsChecked,
                     (bool)cbSunday.IsChecked);
 
-                
-                List<Day> days = new List<Day>();
-                days.Add(day);
-
                 if((bool)cbSaturday.IsChecked || (bool)cbSunday.IsChecked)
                 {
                     if ((bool)cbSaturday.IsChecked)
@@ -83,7 +82,12 @@ namespace CzasPracy
                     }
                 }
 
-                lblDebug.Content = day.ToString();
+                List<Day> days = new List<Day>();
+                days.Add(day);
+
+                //lblDebug.Content = day.ToString();
+
+                JsonFileUtils.PrettyWrite(days, filePath);
             }
             else
             {
@@ -113,11 +117,5 @@ namespace CzasPracy
             }
         }
 
-        private DateTime convertToTime(string text)
-        {
-            DateTime dt = DateTime.Parse(text);
-            
-            return dt;
-        }
     }
 }
