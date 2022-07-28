@@ -36,12 +36,12 @@
     "isSunday": true
   },
   {
-    "Date": "2022-07-21T00:00:00",
-    "ComeTimeHour": 54,
-    "ComeTimeMinute": 22,
-    "LeaveTimeHour": 62,
-    "LeaveTimeMinute": 22,
+    "Date": "2022-07-07T00:00:00",
+    "ComeTimeHour": 1,
+    "ComeTimeMinute": 1,
+    "LeaveTimeHour": 9,
+    "LeaveTimeMinute": 1,
     "isSaturday": false,
-    "isSunday": true
+    "isSunday": false
   }
 ]

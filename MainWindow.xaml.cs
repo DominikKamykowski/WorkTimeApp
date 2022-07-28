@@ -4,6 +4,7 @@ using System.Windows;
 using JsonInNET;
 using System.IO;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace CzasPracy
 {
@@ -30,7 +31,7 @@ namespace CzasPracy
             ///// Do implementacji
             ///
             btnDelegat.IsEnabled = false;
-            
+
 
         }
 
@@ -56,12 +57,12 @@ namespace CzasPracy
                     selectedDay(),
                     int.Parse(txtComeTimeHour.Text),
                     int.Parse(txtComeTimeMinute.Text),
-                    int.Parse(txtComeTimeHour.Text)+8,
+                    int.Parse(txtComeTimeHour.Text) + 8,
                     int.Parse(txtComeTimeMinute.Text),
                     (bool)cbSaturday.IsChecked,
                     (bool)cbSunday.IsChecked);
 
-                if((bool)cbSaturday.IsChecked || (bool)cbSunday.IsChecked)
+                if ((bool)cbSaturday.IsChecked || (bool)cbSunday.IsChecked)
                 {
                     if ((bool)cbSaturday.IsChecked)
                     {
@@ -74,19 +75,19 @@ namespace CzasPracy
                 }
 
                 AddToRegister(day);
-                
+
             }
             else
             {
                 Day day = new Day(
-                    selectedDay(), 
+                    selectedDay(),
                     int.Parse(txtComeTimeHour.Text),
                     int.Parse(txtComeTimeMinute.Text),
                     int.Parse(txtLeaveTimeHour.Text),
                     int.Parse(txtLeaveTimeMinute.Text),
                     (bool)cbSaturday.IsChecked,
                     (bool)cbSunday.IsChecked);
-                
+
                 AddToRegister(day);
             }
         }
@@ -106,22 +107,45 @@ namespace CzasPracy
 
         private void AddToRegister(Day day)
         {
-            var days = JsonFileUtils.Deserialize(filePath);
+            var daysList = JsonFileUtils.Deserialize(filePath);
 
-            if (days==null)
+            if (daysList == null)
             {
-                List<Day> list = new List<Day>();
-                list.Add(day);
-                JsonFileUtils.Serialize(list, filePath);
+                if (!CheckIfExist(day, daysList))
+                {
+                    List<Day> list = new List<Day>();
+                    list.Add(day);
+                    JsonFileUtils.Serialize(list, filePath);
+                }
+                else
+                {
+                    MessageBox.Show("Istnieje!");
+                }
+
             }
             else
             {
-                days.Add(day);
+                if (!CheckIfExist(day, daysList))
+                {
+                    daysList.Add(day);
 
-                JsonFileUtils.Serialize(days, filePath);
+                    JsonFileUtils.Serialize(daysList, filePath);
+                }
+                else
+                {
+                    MessageBox.Show("Istnieje!");
+
+                }
+
             }
-            
         }
 
+            private bool CheckIfExist(Day day, List<Day> list)
+            {
+                var matches = list.Where(x => (x.Date.Month == day.Date.Month) && (x.Date.Day == day.Date.Day));
+                if (matches.Count() == 0) return false;
+                else return true;
+            }
+        }
     }
-}
+
