@@ -1,28 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 using System.IO;
+using CzasPracy;
 
 
 namespace JsonInNET
 {
-    public static class JsonFileUtils
+    static class JsonFileUtils
     {
-        private static readonly JsonSerializerSettings _options = new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore };
-
-        public static void SimpleWrite(object obj, string fileName)
+        public static void Serialize(object obj, string fileName)
         {
-            var jsonString = JsonConvert.SerializeObject(obj, _options);
+            string jsonString = JsonConvert.SerializeObject(obj, Formatting.Indented);
             File.WriteAllText(fileName, jsonString);
         }
 
-        public static void PrettyWrite(object obj, string fileName)
+        public static List<Day> Deserialize(string fileName)
         {
-            var jsonString = JsonConvert.SerializeObject(obj, Formatting.Indented, _options);
-            File.WriteAllText(fileName, jsonString);
+            var jsonReadText = File.ReadAllText(fileName);
+            List<Day> data1 = JsonConvert.DeserializeObject<List<Day>>(jsonReadText);
+
+            return data1;
         }
     }
 }

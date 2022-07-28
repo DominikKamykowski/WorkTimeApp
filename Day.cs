@@ -6,7 +6,8 @@ namespace CzasPracy
 {
     class Day
     {
-        public Day(DateTime date, 
+        public Day(
+            DateTime date, 
             int comeTimeHour, 
             int comeTimeMinute, 
             int leaveTimeHour, 
@@ -37,17 +38,17 @@ namespace CzasPracy
         public DateTime returnDay()
         {
             DateTime dateTime = new DateTime(
-                Date.Year, 
-                Date.Month, 
-                Date.Day, 
-                ComeTimeHour, 
-                ComeTimeMinute, 
+                Date.Year,
+                Date.Month,
+                Date.Day,
+                ComeTimeHour,
+                ComeTimeMinute,
                 0);
 
             return dateTime;
-        }
+            }
 
-        public string returnIsWeekend()
+            public string returnIsWeekend()
         {
             if (isSaturday) { return "Sobota"; }
             if (isSunday) { return "Niedziela"; }
@@ -59,10 +60,8 @@ namespace CzasPracy
 
         public override string ToString()
         {
-            
             string returnString = "Data: " + Date.Date;
 
-            
 
             returnString += " Godzina wejścia: " + ComeTimeHour + ":" + ComeTimeMinute;
             returnString += " Godzina wyjścia: " + LeaveTimeHour + ":" + LeaveTimeMinute;

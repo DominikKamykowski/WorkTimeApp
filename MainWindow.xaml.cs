@@ -1,18 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using JsonInNET;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace CzasPracy
 {
@@ -41,7 +32,6 @@ namespace CzasPracy
             btnDelegat.IsEnabled = false;
             
 
-
         }
 
         private void cb8hours_Click(object sender, RoutedEventArgs e)
@@ -62,7 +52,8 @@ namespace CzasPracy
         {
             if ((bool)cb8hours.IsChecked)
             {
-                Day day = new Day(selectedDay(),
+                Day day = new Day(
+                    selectedDay(),
                     int.Parse(txtComeTimeHour.Text),
                     int.Parse(txtComeTimeMinute.Text),
                     int.Parse(txtComeTimeHour.Text)+8,
@@ -82,16 +73,13 @@ namespace CzasPracy
                     }
                 }
 
-                List<Day> days = new List<Day>();
-                days.Add(day);
-
-                //lblDebug.Content = day.ToString();
-
-                JsonFileUtils.PrettyWrite(days, filePath);
+                AddToRegister(day);
+                
             }
             else
             {
-                Day day = new Day(selectedDay(), 
+                Day day = new Day(
+                    selectedDay(), 
                     int.Parse(txtComeTimeHour.Text),
                     int.Parse(txtComeTimeMinute.Text),
                     int.Parse(txtLeaveTimeHour.Text),
@@ -99,8 +87,7 @@ namespace CzasPracy
                     (bool)cbSaturday.IsChecked,
                     (bool)cbSunday.IsChecked);
                 
-                lblDebug.Content = day.ToString();
-                 
+                AddToRegister(day);
             }
         }
 
@@ -115,6 +102,25 @@ namespace CzasPracy
             {
                 return DateTime.Now;
             }
+        }
+
+        private void AddToRegister(Day day)
+        {
+            var days = JsonFileUtils.Deserialize(filePath);
+
+            if (days==null)
+            {
+                List<Day> list = new List<Day>();
+                list.Add(day);
+                JsonFileUtils.Serialize(list, filePath);
+            }
+            else
+            {
+                days.Add(day);
+
+                JsonFileUtils.Serialize(days, filePath);
+            }
+            
         }
 
     }

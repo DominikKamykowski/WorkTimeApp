@@ -1,10 +1,37 @@
 [
   {
-    "Date": "2022-07-28T09:04:03.9592746+02:00",
+    "Date": "2022-07-28T13:00:15.5418334+02:00",
+    "ComeTimeHour": 9,
+    "ComeTimeMinute": 9,
+    "LeaveTimeHour": 17,
+    "LeaveTimeMinute": 9,
+    "isSaturday": false,
+    "isSunday": false
+  },
+  {
+    "Date": "2022-07-27T00:00:00",
     "ComeTimeHour": 6,
-    "ComeTimeMinute": 0,
+    "ComeTimeMinute": 66,
     "LeaveTimeHour": 14,
-    "LeaveTimeMinute": 0,
+    "LeaveTimeMinute": 66,
+    "isSaturday": false,
+    "isSunday": false
+  },
+  {
+    "Date": "2022-07-21T00:00:00",
+    "ComeTimeHour": 54,
+    "ComeTimeMinute": 22,
+    "LeaveTimeHour": 62,
+    "LeaveTimeMinute": 22,
+    "isSaturday": false,
+    "isSunday": false
+  },
+  {
+    "Date": "2022-07-21T00:00:00",
+    "ComeTimeHour": 54,
+    "ComeTimeMinute": 22,
+    "LeaveTimeHour": 62,
+    "LeaveTimeMinute": 22,
     "isSaturday": false,
     "isSunday": true
   }
