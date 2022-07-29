@@ -9,7 +9,7 @@ using System.Linq;
 namespace JsonInNET
 {
     /// <summary>
-    /// Klasa odpowiadająca za połączenie danych z funkcją zapisu oraz odczytu z pliku .json
+    /// Klasa odpowiadająca za połączenie danych z funkcją zapisu oraz odczytu z pliku .json.
     /// </summary>
     static class JsonFileUtils
     {
