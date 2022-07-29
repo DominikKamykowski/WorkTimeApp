@@ -43,5 +43,14 @@
     "LeaveTimeMinute": 1,
     "isSaturday": false,
     "isSunday": false
+  },
+  {
+    "Date": "2022-07-29T07:40:01.895278+02:00",
+    "ComeTimeHour": 1,
+    "ComeTimeMinute": 1,
+    "LeaveTimeHour": 9,
+    "LeaveTimeMinute": 1,
+    "isSaturday": false,
+    "isSunday": false
   }
 ]

@@ -13,8 +13,6 @@ namespace CzasPracy
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string filePath = @"C:\Users\user\source\repos\CzasPracy\data.json";
-
         public MainWindow()
         {
             InitializeComponent();
@@ -28,11 +26,15 @@ namespace CzasPracy
             txtLeaveTimeHour.IsEnabled = false;
             txtLeaveTimeMinute.IsEnabled = false;
 
+            ///// Wiązanie DataGrid do listy dni
+
+            dgDays.ItemsSource = JsonFileUtils.GetSortedList();
+
             ///// Do implementacji
             ///
             btnDelegat.IsEnabled = false;
 
-
+            
         }
 
         private void cb8hours_Click(object sender, RoutedEventArgs e)
@@ -107,21 +109,14 @@ namespace CzasPracy
 
         private void AddToRegister(Day day)
         {
-            var daysList = JsonFileUtils.Deserialize(filePath);
+            var daysList = JsonFileUtils.Deserialize();
 
             if (daysList == null)
             {
-                if (!CheckIfExist(day, daysList))
-                {
-                    List<Day> list = new List<Day>();
-                    list.Add(day);
-                    JsonFileUtils.Serialize(list, filePath);
-                }
-                else
-                {
-                    MessageBox.Show("Istnieje!");
-                }
-
+                List<Day> list = new List<Day>();
+                list.Add(day);
+                JsonFileUtils.Serialize(list);
+                
             }
             else
             {
@@ -129,23 +124,22 @@ namespace CzasPracy
                 {
                     daysList.Add(day);
 
-                    JsonFileUtils.Serialize(daysList, filePath);
+                    JsonFileUtils.Serialize(daysList);
                 }
                 else
                 {
-                    MessageBox.Show("Istnieje!");
-
+                    MyMessageBox.ShowWarningMessageBox("Dzień jest już uzupełniony!");
                 }
 
             }
         }
 
-            private bool CheckIfExist(Day day, List<Day> list)
-            {
-                var matches = list.Where(x => (x.Date.Month == day.Date.Month) && (x.Date.Day == day.Date.Day));
-                if (matches.Count() == 0) return false;
-                else return true;
-            }
+        private bool CheckIfExist(Day day, List<Day> list)
+        {
+            var matches = list.Where(x => (x.Date.Month == day.Date.Month) && (x.Date.Day == day.Date.Day));
+            if (matches.Count() == 0) return false;
+            else return true;
         }
     }
+}
 
