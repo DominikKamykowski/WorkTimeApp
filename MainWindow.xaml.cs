@@ -19,6 +19,10 @@ namespace CzasPracy
             InitializeView();
         }
 
+
+        /// <summary>
+        /// Metoda obsługująca inicjalizację elementów w GUI
+        /// </summary>
         private void InitializeView()
         {
             ///// obsluga widoku 8h pracy
@@ -37,6 +41,11 @@ namespace CzasPracy
             
         }
 
+        /// <summary>
+        /// Metoda obsługująca naciśnięcie Checkbox'a, który odpowiada za opcję domyslnych 8 godzin pracy.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cb8hours_Click(object sender, RoutedEventArgs e)
         {
             if ((bool)cb8hours.IsChecked)
@@ -51,6 +60,15 @@ namespace CzasPracy
             }
         }
 
+
+        /// <summary>
+        /// Metoda obsługująca naciśnięcie przycisku "Zatwierdź".
+        /// Sprawdza czy użytkownik zaznaczył opcję "8 godzin",
+        /// tworzy obiekt klasy Day z atrybutami pobranymi z GUI,
+        /// wysyła utworzony obiekt do klasy, która zapisuje obiekt do pliku.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnApply_Click(object sender, RoutedEventArgs e)
         {
             if ((bool)cb8hours.IsChecked)
@@ -94,6 +112,10 @@ namespace CzasPracy
             }
         }
 
+        /// <summary>
+        /// Metoda, która zwraca zaznaczony na kalendarzu dzień.
+        /// </summary>
+        /// <returns>Aktualnie zaznaczony dzień na kalendarzu</returns>
         private DateTime selectedDay()
         {
             if (calData.SelectedDate.HasValue)
@@ -107,6 +129,12 @@ namespace CzasPracy
             }
         }
 
+
+        /// <summary>
+        /// Metoda obsługująca dodanie obiektu klasy "Day" do pliku.
+        /// 
+        /// </summary>
+        /// <param name="day">Obiekt klasy "Day"</param>
         private void AddToRegister(Day day)
         {
             var daysList = JsonFileUtils.Deserialize();
@@ -130,10 +158,16 @@ namespace CzasPracy
                 {
                     MyMessageBox.ShowWarningMessageBox("Dzień jest już uzupełniony!");
                 }
-
             }
         }
 
+
+        /// <summary>
+        /// Metoda obsługująca funkcję sprawdzenia tego, czy istnieje w liście konkretny obiekt klasy "Day".
+        /// </summary>
+        /// <param name="day">Poszukiwany obiekt klasy "Day"</param>
+        /// <param name="list">Przeszukiwana lista obiektów klasy "Day"</param>
+        /// <returns>True - obiekt istnieje w liście, False - obiekt nie znajduje się w liście.</returns>
         private bool CheckIfExist(Day day, List<Day> list)
         {
             var matches = list.Where(x => (x.Date.Month == day.Date.Month) && (x.Date.Day == day.Date.Day));

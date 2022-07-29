@@ -8,6 +8,9 @@ using System.Linq;
 
 namespace JsonInNET
 {
+    /// <summary>
+    /// Klasa odpowiadająca za połączenie danych z funkcją zapisu oraz odczytu z pliku .json
+    /// </summary>
     static class JsonFileUtils
     {
         public static string filePath = @"C:\Users\user\source\repos\CzasPracy\data.json"; // Ścieżka do pliku danych json

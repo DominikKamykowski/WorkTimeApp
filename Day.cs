@@ -6,6 +6,16 @@ namespace CzasPracy
 {
     class Day
     {
+        /// <summary>
+        /// Konstruktor klasy "Day"
+        /// </summary>
+        /// <param name="date">Data</param>
+        /// <param name="comeTimeHour">Godzina wejścia do pracy</param>
+        /// <param name="comeTimeMinute">Minuta wejścia do pracy</param>
+        /// <param name="leaveTimeHour">Godzina wyjścia z pracy</param>
+        /// <param name="leaveTimeMinute">Minuta wyjścia z pracy</param>
+        /// <param name="isSaturday">Bool - czy jest to sobota?</param>
+        /// <param name="isSunday">Bool - czy jest to niedziela?</param>
         public Day(
             DateTime date, 
             int comeTimeHour, 
@@ -35,6 +45,11 @@ namespace CzasPracy
 
         public bool isSunday { get; set; }
 
+
+        /// <summary>
+        /// Metoda obsługująca zwrócenie aktualnej daty.
+        /// </summary>
+        /// <returns>Aktualna data obiektu</returns>
         public DateTime returnDay()
         {
             DateTime dateTime = new DateTime(
@@ -48,6 +63,12 @@ namespace CzasPracy
             return dateTime;
             }
 
+
+        /// <summary>
+        /// Metoda obsługująca zwrócenie właściwości klasy.
+        /// Zwraca w formie string, czy obiekt posiada właściwość isSaturday lub isSunday.
+        /// </summary>
+        /// <returns>Informacja czy jest to dzień weekendu</returns>
             public string returnIsWeekend()
         {
             if (isSaturday) { return "Sobota"; }
@@ -58,6 +79,11 @@ namespace CzasPracy
             }
         }
 
+
+        /// <summary>
+        /// Metoda obsługująca funkcję zwrócenia obiektu w dormie string.
+        /// </summary>
+        /// <returns>Właściwości obiektu "Day" w formie jednego string</returns>
         public override string ToString()
         {
             string returnString = "Data: " + Date.Date;
